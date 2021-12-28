@@ -12,21 +12,17 @@
     "eslint-plugin-prettier": "^3.3.1",
     "prettier": "^2.2.1"
   },
-  "description": "로또 미션",
+  "description": "로또 어플리케이션",
   "scripts": {
     "cypress": "./node_modules/.bin/cypress open"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/365kim/javascript-lotto.git"
+    "url": "git+https://github.com/gml9812/js-lotto.git"
   },
   "keywords": [],
-  "contributors": [
-    "sunyoungkwon",
-    "365kim"
-  ],
   "bugs": {
-    "url": "https://github.com/365kim/javascript-lotto/issues"
+    "url": "https://github.com/gml9812/js-lotto/issues"
   },
-  "homepage": "https://github.com/365kim/javascript-lotto#readme"
+  "homepage": "https://github.com/gml9812/js-lotto#readme"
 }
