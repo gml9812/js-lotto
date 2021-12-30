@@ -1,4 +1,4 @@
-import { SELECTOR, LOTTO, WARNING } from '../../src/js/constants/index.js';
+import { SELECTOR, WARNING } from '../../src/js/constants/index.js';
 
 const testIncorrectInput = (value, warning) => {
   const stub = cy.stub();
@@ -17,7 +17,7 @@ describe('로또 구입 금액 입력 테스트', () => {
   });
 
   it('페이지 접속 시 로또 구입 금액 입력 창을 보여 준다', () => {
-    cy.get(SELECTOR.PURCHASE_AMOUNT.CONTAINER).should('exist');
+    cy.get(SELECTOR.PURCHASE_AMOUNT.FORM).should('exist');
     cy.get(SELECTOR.PURCHASE_AMOUNT.INPUT).should('exist');
     cy.get(SELECTOR.PURCHASE_AMOUNT.BUTTON).should('exist');
   });
@@ -31,7 +31,7 @@ describe('로또 구입 금액 입력 테스트', () => {
   });
 
   it('로또 1장의 가격으로 나누어 떨어지지 않는 금액이 입력될 경우 거슬러 줄 금액을 alert한다', () => {
-    testIncorrectInput('4300', '거스름돈 300원 나왔습니다.');
+    testIncorrectInput('4300', '거스름돈 300원 받아가세요');
   });
 
   it('정상적인 금액이 입력되었을 시 발급된 로또를 보여 준다', () => {

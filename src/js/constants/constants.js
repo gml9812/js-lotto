@@ -1,19 +1,19 @@
 export const SELECTOR = {
   PURCHASE_AMOUNT: {
-    CONTAINER: 'purchase-amount-container',
-    INPUT: 'purchase-amount-container__input',
-    BUTTON: 'purchase-amount-container__button',
+    FORM: '.purchase-amount-form',
+    INPUT: '.purchase-amount-form__input',
+    BUTTON: '.purchase-amount-form__button',
   },
 
   PURCHASED_LOTTOS: {
-    CONTAINER: 'purchased-lottos-container',
-    SWITCH: 'purchased-lottos-container__switch',
+    CONTAINER: '.purchased-lottos-container',
+    SWITCH: '.purchased-lottos-container__switch',
   },
 
   WINNING_NUMBER: {
-    CONTAINER: 'winning-number-container',
-    INPUT: 'winning-number-container__input',
-    BUTTON: 'winning-number-container__button',
+    FORM: '.winning-number-form',
+    INPUT: '.winning-number-form__input',
+    BUTTON: '.winning-number-form__button',
   },
 };
 
