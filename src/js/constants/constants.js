@@ -1,6 +1,7 @@
 export const SELECTOR = {
   PURCHASE_AMOUNT: {
     FORM: '.purchase-amount-form',
+    MESSAGE: '.purchase-amount-form-message',
     INPUT: '.purchase-amount-form__input',
     BUTTON: '.purchase-amount-form__button',
   },
@@ -12,6 +13,7 @@ export const SELECTOR = {
 
   WINNING_NUMBER: {
     FORM: '.winning-number-form',
+    MESSAGE: 'winning-number-form-message',
     INPUT: '.winning-number-form__input',
     BUTTON: '.winning-number-form__button',
   },

@@ -18,6 +18,8 @@ export default class LottoGameController {
   // event listener에 그냥 함수 사용할 경우, event는 pointerclickevent, this는 event listener가 부착된 프로퍼티. this.model 접근했을 시 undefined
 
   // this를 바인드할 경우 this는 LottogameController 유지, this.model 접근 시 제대로 출력.
+
+  //popup message로 처리하는 방식으로 바꾸기. 
   handlePurchasedAmount(event) {
     event.preventDefault();
 
