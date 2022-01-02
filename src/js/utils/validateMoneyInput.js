@@ -8,21 +8,17 @@ const isLessThanSmallestUnit = (moneyInput) => {
   return !Number.isInteger(moneyInput);
 };
 
-const isChangeExist = (moneyInput) => {
-  return moneyInput % LOTTO.PRICE !== 0;
-};
-
 export const validateMoneyInput = (moneyInput) => {
+  let isValid = true;
+  let message = '';
+
   if (isLessThanMinimum(moneyInput)) {
-    alert(WARNING.INVALID_MONEY_INPUT);
-    return false;
+    isValid = false;
+    message = WARNING.INVALID_MONEY_INPUT;
   }
   if (isLessThanSmallestUnit(moneyInput)) {
-    alert(WARNING.LESS_THAN_SMALLEST_UNIT);
-    return false;
+    isValid = false;
+    message = WARNING.LESS_THAN_SMALLEST_UNIT;
   }
-  if (isChangeExist(moneyInput)) {
-    alert(`거스름돈 ${moneyInput % LOTTO.PRICE}원 받아가세요`);
-  }
-  return true;
+  return { isValid, message };
 };

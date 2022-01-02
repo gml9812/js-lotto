@@ -27,6 +27,10 @@ export default class LottoGameView {
     $(target).disabled = true;
   }
 
+  setTargetMessage(target, message) {
+    $(target).innerHTML = message;
+  }
+
   renderPurchasedLotto(lottoNumber) {
     this.disable(SELECTOR.PURCHASE_AMOUNT.FORM);
     this.show(SELECTOR.PURCHASED_LOTTOS.CONTAINER);
