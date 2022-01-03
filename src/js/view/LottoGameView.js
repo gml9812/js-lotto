@@ -7,6 +7,7 @@ export default class LottoGameView {
   }
 
   reset() {
+    this.disable(SELECTOR.PURCHASE_AMOUNT.BUTTON);
     this.hide(SELECTOR.PURCHASED_LOTTOS.CONTAINER);
     this.hide(SELECTOR.WINNING_NUMBER.FORM);
   }
@@ -46,7 +47,7 @@ export default class LottoGameView {
           </label>
         </div>
       </div>
-      <div class="d-flex flex-wrap">
+      <div class="d-flex flex-wrap purchased-lottos-container__lottolist">
         ${this.lottoTemplate().repeat(lottoNumber)}
       </div>
     `;
@@ -54,7 +55,7 @@ export default class LottoGameView {
 
   lottoTemplate() {
     return `
-      <span class="mx-1 text-4xl">🎟️ </span>
+      <span class="mx-1 text-4xl purchased-lottos-container__lotto d-flex">🎟️ </span>
     `;
   }
 }

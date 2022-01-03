@@ -8,6 +8,9 @@ export const SELECTOR = {
 
   PURCHASED_LOTTOS: {
     CONTAINER: '.purchased-lottos-container',
+    LOTTO_LIST: '.purchased-lottos-container__lottolist',
+    LOTTO: '.purchased-lottos-container__lotto',
+    LOTTO_NUMBER: '.purchased-lottos-container__lottonumber',
     SWITCH: '.purchased-lottos-container__switch',
   },
 
