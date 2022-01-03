@@ -23,14 +23,11 @@ export default class LottoGameController {
   // popup message로 처리하는 방식으로 바꾸기.
 
   handleTypePurchasedAmount() {
-    // 올바른 입력값 준비될 때까지 button은 활성화되지 않는다.
-
-    const moneyInput = Number($(SELECTOR.PURCHASE_AMOUNT.INPUT).value);
+    const moneyInput = $(SELECTOR.PURCHASE_AMOUNT.INPUT).value;
 
     const { isValid, message } = validateMoneyInput(moneyInput);
 
     // 왜 삼중연산자 쓰면 안되냐
-    // 모든 것 다 지웠을 때 메시지 지워져야 함. 
     if (isValid) {
       this.view.enable(SELECTOR.PURCHASE_AMOUNT.BUTTON);
     } else {

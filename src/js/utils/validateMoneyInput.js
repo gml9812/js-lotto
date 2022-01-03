@@ -1,24 +1,37 @@
 import { WARNING, LOTTO } from '../constants/index.js';
 
-const isLessThanMinimum = (moneyInput) => {
-  return moneyInput < LOTTO.PRICE;
+const isLessThanMinimum = (moneyNumber) => {
+  return moneyNumber < LOTTO.PRICE;
 };
 
-const isLessThanSmallestUnit = (moneyInput) => {
-  return !Number.isInteger(moneyInput);
+const isLessThanSmallestUnit = (moneyNumber) => {
+  return !Number.isInteger(moneyNumber);
 };
 
 export const validateMoneyInput = (moneyInput) => {
-  let isValid = true;
-  let message = '';
+  if (moneyInput === '') {
+    return {
+      isValid: false,
+      message: '',
+    };
+  }
 
-  if (isLessThanMinimum(moneyInput)) {
-    isValid = false;
-    message = WARNING.INVALID_MONEY_INPUT;
+  const moneyNumber = Number(moneyInput);
+
+  if (isLessThanMinimum(moneyNumber)) {
+    return {
+      isValid: false,
+      message: WARNING.INVALID_MONEY_INPUT,
+    };
   }
-  if (isLessThanSmallestUnit(moneyInput)) {
-    isValid = false;
-    message = WARNING.LESS_THAN_SMALLEST_UNIT;
+  if (isLessThanSmallestUnit(moneyNumber)) {
+    return {
+      isValid: false,
+      message: WARNING.LESS_THAN_SMALLEST_UNIT,
+    };
   }
-  return { isValid, message };
+  return {
+    isValid: true,
+    message: '',
+  };
 };

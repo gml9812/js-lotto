@@ -32,8 +32,10 @@ export default class LottoGameView {
   }
 
   renderPurchasedLotto(lottoNumber) {
-    this.disable(SELECTOR.PURCHASE_AMOUNT.FORM);
+    this.disable(SELECTOR.PURCHASE_AMOUNT.BUTTON);
+    this.disable(SELECTOR.PURCHASE_AMOUNT.INPUT);
     this.show(SELECTOR.PURCHASED_LOTTOS.CONTAINER);
+
     $(SELECTOR.PURCHASED_LOTTOS.CONTAINER).innerHTML = `
       <div class="d-flex">
         <label class="flex-auto my-0">총 ${lottoNumber}개를 구매하였습니다.</label>
