@@ -17,7 +17,8 @@ export const SELECTOR = {
   WINNING_NUMBER: {
     FORM: '.winning-number-form',
     MESSAGE: 'winning-number-form__message',
-    INPUT: '.winning-number-form__input',
+    MAIN_NUMBER: '.winning-number-form__main-number',
+    BONUS_NUMBER: '.winning-number-form__bonus-number',
     BUTTON: '.winning-number-form__button',
   },
 };
@@ -33,4 +34,7 @@ export const LOTTO = {
 export const WARNING = {
   INVALID_MONEY_INPUT: `최소 ${LOTTO.PRICE}원 이상의 금액을 입력하세요`,
   LESS_THAN_SMALLEST_UNIT: `${LOTTO.SMALLEST_UNIT}원 이하의 단위는 입력하실 수 없습니다`,
+  UNFILLED_WINNING_NUM: `6개 당첨 번호와 보너스 번호를 전부 입력해 주세요!`,
+  NUM_NOT_IN_RANGE: `${LOTTO.NUM_LEAST} ~ ${LOTTO.NUM_MOST} 사이의 정수를 입력해 주세요!`,
+  DUPLICATE_NUM: `중복되는 당첨 번호가 있어요!`,
 };

@@ -40,6 +40,7 @@ export default class LottoGameView {
     this.disable(SELECTOR.PURCHASE_AMOUNT.BUTTON);
     this.disable(SELECTOR.PURCHASE_AMOUNT.INPUT);
     this.show(SELECTOR.PURCHASED_LOTTOS.CONTAINER);
+    this.show(SELECTOR.WINNING_NUMBER.FORM);
 
     $(SELECTOR.PURCHASED_LOTTOS.CONTAINER).innerHTML = `
       <div class="d-flex">
