@@ -19,6 +19,7 @@ describe('구입한 로또 테스트', () => {
       .each((lottoNumbers) => {
         const lottoNumberList = lottoNumbers
           .text()
+          .trim()
           .split(' ')
           .map((number) => number.trim());
         expect(lottoNumberList.length).to.be.eq(6);
@@ -30,7 +31,7 @@ describe('구입한 로또 테스트', () => {
         });
 
         const lottoNumberSet = new Set(lottoNumberList);
-        expect(lottoNumberSet.length).to.be.eq(lottoNumberList.length);
+        expect(lottoNumberSet.size).to.be.eq(lottoNumberList.length);
       });
   });
 });

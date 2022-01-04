@@ -10,7 +10,7 @@ export const SELECTOR = {
     CONTAINER: '.purchased-lottos-container',
     LOTTO_LIST: '.purchased-lottos-container__lottolist',
     LOTTO: '.purchased-lottos-container__lotto',
-    LOTTO_NUMBER: '.purchased-lottos-container__lottonumber',
+    LOTTO_NUMBERS: '.purchased-lottos-container__lottonumbers',
     SWITCH: '.purchased-lottos-container__switch',
   },
 
@@ -25,6 +25,9 @@ export const SELECTOR = {
 export const LOTTO = {
   PRICE: 1000,
   SMALLEST_UNIT: 1,
+  NUM_COUNT: 6,
+  NUM_LEAST: 1,
+  NUM_MOST: 45,
 };
 
 export const WARNING = {

@@ -7,8 +7,8 @@ export default class LottoGameModel {
     this.lottos = [];
   }
 
-  lottoNumber() {
-    return this.lottos.length;
+  getLottos() {
+    return this.lottos;
   }
 
   buyLotto(lotto) {

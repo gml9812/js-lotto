@@ -1,6 +1,6 @@
 import { LottoModel, LottoGameModel } from '../model/index.js';
 import { LottoGameView } from '../view/index.js';
-import { LOTTO, SELECTOR, WARNING } from '../constants/constants.js';
+import { LOTTO, SELECTOR } from '../constants/constants.js';
 import { $, validateMoneyInput } from '../utils/index.js';
 
 export default class LottoGameController {
@@ -13,6 +13,7 @@ export default class LottoGameController {
   setEvent() {
     $(SELECTOR.PURCHASE_AMOUNT.FORM).addEventListener('keyup', this.handleTypePurchasedAmount.bind(this));
     $(SELECTOR.PURCHASE_AMOUNT.FORM).addEventListener('submit', this.handleSubmitPurchasedAmount.bind(this));
+    $(SELECTOR.PURCHASED_LOTTOS.CONTAINER).addEventListener('change', this.handleToggleLottoNumbers.bind(this));
   }
 
   // event listener에 화살표 함수 사용할 경우, event는 undefined, this는 LottogameController 클래스.
@@ -20,14 +21,11 @@ export default class LottoGameController {
 
   // this를 바인드할 경우 this는 LottogameController 유지, this.model 접근 시 제대로 출력.
 
-  // popup message로 처리하는 방식으로 바꾸기.
-
   handleTypePurchasedAmount() {
     const moneyInput = $(SELECTOR.PURCHASE_AMOUNT.INPUT).value;
 
     const { isValid, message } = validateMoneyInput(moneyInput);
 
-    // 왜 삼중연산자 쓰면 안되냐
     if (isValid) {
       this.view.enable(SELECTOR.PURCHASE_AMOUNT.BUTTON);
     } else {
@@ -47,12 +45,18 @@ export default class LottoGameController {
       const lotto = new LottoModel();
       this.model.buyLotto(lotto);
     }
-    this.view.renderPurchasedLotto(this.model.lottoNumber());
+    this.view.renderPurchasedLotto(this.model.getLottos());
   }
 
   giveChange(moneyInput) {
     if (moneyInput % LOTTO.PRICE !== 0) {
-      alert(`거스름돈 ${moneyInput % LOTTO.PRICE}원 받아가세요`);
+      this.view.alertMessage(`거스름돈 ${moneyInput % LOTTO.PRICE}원 받아가세요`);
     }
+  }
+
+  handleToggleLottoNumbers({ target }) {
+    if (target.closest(SELECTOR.PURCHASED_LOTTOS.SWITCH) !== $(SELECTOR.PURCHASED_LOTTOS.SWITCH)) return;
+
+    this.view.toggleLottoNumbers();
   }
 }

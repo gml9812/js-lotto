@@ -1,5 +1,5 @@
 import { SELECTOR } from '../constants/index.js';
-import { $ } from '../utils/index.js';
+import { $, $$ } from '../utils/index.js';
 
 export default class LottoGameView {
   constructor() {
@@ -32,14 +32,18 @@ export default class LottoGameView {
     $(target).innerHTML = message;
   }
 
-  renderPurchasedLotto(lottoNumber) {
+  alertMessage(message) {
+    alert(message);
+  }
+
+  renderPurchasedLotto(lottos) {
     this.disable(SELECTOR.PURCHASE_AMOUNT.BUTTON);
     this.disable(SELECTOR.PURCHASE_AMOUNT.INPUT);
     this.show(SELECTOR.PURCHASED_LOTTOS.CONTAINER);
 
     $(SELECTOR.PURCHASED_LOTTOS.CONTAINER).innerHTML = `
       <div class="d-flex">
-        <label class="flex-auto my-0">총 ${lottoNumber}개를 구매하였습니다.</label>
+        <label class="flex-auto my-0">총 ${lottos.length}개를 구매하였습니다.</label>
         <div class="flex-auto d-flex justify-end pr-1">
           <label class="switch purchased-lottos-container__switch">
             <input type="checkbox" class="lotto-numbers-toggle-button" />
@@ -48,14 +52,24 @@ export default class LottoGameView {
         </div>
       </div>
       <div class="d-flex flex-wrap purchased-lottos-container__lottolist">
-        ${this.lottoTemplate().repeat(lottoNumber)}
+        ${lottos.map((lotto) => this.lottoTemplate(lotto)).join('')}
       </div>
     `;
   }
 
-  lottoTemplate() {
+  lottoTemplate(lotto) {
     return `
-      <span class="mx-1 text-4xl purchased-lottos-container__lotto d-flex">🎟️ </span>
+      <span class="mx-1 text-4xl purchased-lottos-container__lotto d-flex">🎟️ 
+        <div class="purchased-lottos-container__lottonumbers" hidden>
+          ${lotto.getNumbers().join(' ')}
+        </div>
+      </span>
     `;
+  }
+
+  toggleLottoNumbers() {
+    $$(SELECTOR.PURCHASED_LOTTOS.LOTTO_NUMBERS).forEach((numbers) => {
+      numbers.hidden = !numbers.hidden;
+    })
   }
 }
