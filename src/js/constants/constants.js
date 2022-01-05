@@ -21,6 +21,14 @@ export const SELECTOR = {
     BONUS_NUMBER: '.winning-number-form__bonus-number',
     BUTTON: '.winning-number-form__button',
   },
+
+  RESULT: {
+    MODAL: '.result-modal',
+    TABLE: '.result-modal__table',
+    WIN_COUNT: '.result-modal__win-count',
+    CLOSE_BUTTON: '.result-modal__close_button',
+    RESET_BUTTON: '.result-modal__reset-button',
+  },
 };
 
 export const LOTTO = {

@@ -38,8 +38,8 @@ describe('로또 구입 금액 입력 테스트', () => {
   it('정상적인 금액이 입력되었을 시 발급된 로또와 당첨 번호 입력 창을 보여 주고, input과 button을 disable시킨다', () => {
     cy.get(SELECTOR.PURCHASE_AMOUNT.INPUT).type('2000');
     cy.get(SELECTOR.PURCHASE_AMOUNT.BUTTON).check();
-    cy.get(SELECTOR.PURCHASED_LOTTOS.CONTAINER).should('exist');
-    cy.get(SELECTOR.WINNING_NUMBER.FORM).should('exist');
+    cy.get(SELECTOR.PURCHASED_LOTTOS.CONTAINER).should('be.visible');
+    cy.get(SELECTOR.WINNING_NUMBER.FORM).should('be.visible');
   });
 
 });
