@@ -1,5 +1,9 @@
 import { WARNING, LOTTO } from '../constants/index.js';
 
+const isEmpty = (moneyInput) => {
+  return moneyInput === '';
+};
+
 const isLessThanMinimum = (moneyNumber) => {
   return moneyNumber < LOTTO.PRICE;
 };
@@ -9,7 +13,7 @@ const isLessThanSmallestUnit = (moneyNumber) => {
 };
 
 export const validateMoneyInput = (moneyInput) => {
-  if (moneyInput === '') {
+  if (isEmpty(moneyInput)) {
     return {
       isValid: false,
       message: '',

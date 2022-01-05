@@ -17,8 +17,8 @@ describe('로또 당첨 번호 입력 테스트', () => {
 
   it('6개의 당첨 번호와 1개의 보너스 번호 중 하나라도 입력되지 않았을 경우 warning messege를 보여 준다', () => {
     cy.get(SELECTOR.WINNING_NUMBER.MAIN_NUMBER).eq(0).type('15');
-    cy.get(SELECTOR.WINNING_NUMBER.MAIN_NUMBER).eq(5).type('12');
-    cy.get(SELECTOR.WINNING_NUMBER.MAIN_NUMBER).eq(6).type('21');
+    cy.get(SELECTOR.WINNING_NUMBER.MAIN_NUMBER).eq(2).type('12');
+    cy.get(SELECTOR.WINNING_NUMBER.MAIN_NUMBER).eq(5).type('21');
 
     cy.get(SELECTOR.WINNING_NUMBER.MESSAGE).should('have.text', WARNING.UNFILLED_WINNING_NUM);
   });

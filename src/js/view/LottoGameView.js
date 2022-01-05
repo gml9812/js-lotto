@@ -8,6 +8,7 @@ export default class LottoGameView {
 
   reset() {
     this.disable(SELECTOR.PURCHASE_AMOUNT.BUTTON);
+    this.disable(SELECTOR.WINNING_NUMBER.BUTTON);
     this.hide(SELECTOR.PURCHASED_LOTTOS.CONTAINER);
     this.hide(SELECTOR.WINNING_NUMBER.FORM);
   }

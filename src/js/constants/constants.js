@@ -16,7 +16,7 @@ export const SELECTOR = {
 
   WINNING_NUMBER: {
     FORM: '.winning-number-form',
-    MESSAGE: 'winning-number-form__message',
+    MESSAGE: '.winning-number-form__message',
     MAIN_NUMBER: '.winning-number-form__main-number',
     BONUS_NUMBER: '.winning-number-form__bonus-number',
     BUTTON: '.winning-number-form__button',

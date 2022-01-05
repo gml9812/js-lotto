@@ -1,7 +1,7 @@
 import { LottoModel, LottoGameModel } from '../model/index.js';
 import { LottoGameView } from '../view/index.js';
 import { LOTTO, SELECTOR } from '../constants/constants.js';
-import { $, validateMoneyInput } from '../utils/index.js';
+import { $, $$, validateMoneyInput, validateWinningNumberInput } from '../utils/index.js';
 
 export default class LottoGameController {
   constructor() {
@@ -14,6 +14,7 @@ export default class LottoGameController {
     $(SELECTOR.PURCHASE_AMOUNT.FORM).addEventListener('keyup', this.handleTypePurchasedAmount.bind(this));
     $(SELECTOR.PURCHASE_AMOUNT.FORM).addEventListener('submit', this.handleSubmitPurchasedAmount.bind(this));
     $(SELECTOR.PURCHASED_LOTTOS.CONTAINER).addEventListener('change', this.handleToggleLottoNumbers.bind(this));
+    $(SELECTOR.WINNING_NUMBER.FORM).addEventListener('keyup', this.handleTypeWinningNumbers.bind(this));
   }
 
   // event listener에 화살표 함수 사용할 경우, event는 undefined, this는 LottogameController 클래스.
@@ -55,8 +56,25 @@ export default class LottoGameController {
   }
 
   handleToggleLottoNumbers({ target }) {
-    if (target.closest(SELECTOR.PURCHASED_LOTTOS.SWITCH) !== $(SELECTOR.PURCHASED_LOTTOS.SWITCH)) return;
+    if (!target.closest(SELECTOR.PURCHASED_LOTTOS.SWITCH)) return;
 
     this.view.toggleLottoNumbers();
+  }
+
+  // 2자리수 입력하면 자동으로 다음거 포커스되는 기능.
+  handleTypeWinningNumbers() {
+    const winningNumberInput = Array.from($$(SELECTOR.WINNING_NUMBER.MAIN_NUMBER)).map(
+      (winningNumber) => winningNumber.value
+    );
+    winningNumberInput.push($(SELECTOR.WINNING_NUMBER.BONUS_NUMBER).value);
+
+    const { isValid, message } = validateWinningNumberInput(winningNumberInput);
+
+    if (isValid) {
+      this.view.enable(SELECTOR.WINNING_NUMBER.BUTTON);
+    } else {
+      this.view.disable(SELECTOR.WINNING_NUMBER.BUTTON);
+    }
+    this.view.setTargetMessage(SELECTOR.WINNING_NUMBER.MESSAGE, message);
   }
 }
