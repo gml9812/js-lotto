@@ -26,7 +26,7 @@ export const SELECTOR = {
     MODAL: '.result-modal',
     TABLE: '.result-modal__table',
     WIN_COUNT: '.result-modal__win-count',
-    CLOSE_BUTTON: '.result-modal__close_button',
+    CLOSE_BUTTON: '.result-modal__close-button',
     RESET_BUTTON: '.result-modal__reset-button',
   },
 };
@@ -37,6 +37,12 @@ export const LOTTO = {
   NUM_COUNT: 6,
   NUM_LEAST: 1,
   NUM_MOST: 45,
+
+  PRIZE_5TH: 5000,
+  PRIZE_4TH: 50000,
+  PRIZE_3RD: 1500000,
+  PRIZE_2ND: 30000000,
+  PRIZE_1ST: 2000000000,
 };
 
 export const WARNING = {

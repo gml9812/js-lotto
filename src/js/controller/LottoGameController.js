@@ -15,6 +15,8 @@ export default class LottoGameController {
     $(SELECTOR.PURCHASE_AMOUNT.FORM).addEventListener('submit', this.handleSubmitPurchasedAmount.bind(this));
     $(SELECTOR.PURCHASED_LOTTOS.CONTAINER).addEventListener('change', this.handleToggleLottoNumbers.bind(this));
     $(SELECTOR.WINNING_NUMBER.FORM).addEventListener('keyup', this.handleTypeWinningNumbers.bind(this));
+    $(SELECTOR.WINNING_NUMBER.FORM).addEventListener('click', this.handleResultButtonClick.bind(this));
+    $(SELECTOR.RESULT.MODAL).addEventListener('click', this.handleModalButtonClick.bind(this));
   }
 
   // event listener에 화살표 함수 사용할 경우, event는 undefined, this는 LottogameController 클래스.
@@ -61,7 +63,7 @@ export default class LottoGameController {
     this.view.toggleLottoNumbers();
   }
 
-  // 2자리수 입력하면 자동으로 다음거 포커스되는 기능.
+  // 2자리수 입력하면 자동으로 다음거 포커스되는 기능 추가.
   handleTypeWinningNumbers() {
     const winningNumberInput = Array.from($$(SELECTOR.WINNING_NUMBER.MAIN_NUMBER)).map(
       (winningNumber) => winningNumber.value
@@ -76,5 +78,35 @@ export default class LottoGameController {
       this.view.disable(SELECTOR.WINNING_NUMBER.BUTTON);
     }
     this.view.setTargetMessage(SELECTOR.WINNING_NUMBER.MESSAGE, message);
+  }
+
+  handleResultButtonClick({ target }) {
+    if (!target.closest(SELECTOR.WINNING_NUMBER.BUTTON)) return;
+
+    const winningNumberInput = Array.from($$(SELECTOR.WINNING_NUMBER.MAIN_NUMBER)).map(
+      (winningNumber) => winningNumber.value
+    );
+    const bonusNumberInput = $(SELECTOR.WINNING_NUMBER.BONUS_NUMBER).value;
+
+    this.model.setWinningNumbers({
+      mainNumbers: winningNumberInput,
+      bonusNumber: bonusNumberInput,
+    });
+    this.view.renderModal(this.model.getWinnings());
+    this.view.showModal(SELECTOR.RESULT.MODAL);
+  }
+
+  resetLotto() {
+    this.model.reset();
+    this.view.reset();
+  }
+
+  // x키가 아니라 바깥쪽 클릭해도 닫혀야 한다.
+  handleModalButtonClick({ target }) {
+    if (target.closest(SELECTOR.RESULT.CLOSE_BUTTON)) {
+      this.view.hideModal(SELECTOR.RESULT.MODAL);
+    } else if (target.closest(SELECTOR.RESULT.RESET_BUTTON)) {
+      this.resetLotto();
+    }
   }
 }

@@ -21,11 +21,11 @@ describe('로또 결과 확인 테스트', () => {
 
     cy.get(SELECTOR.RESULT.MODAL).should('be.visible');
     cy.get(SELECTOR.RESULT.CLOSE_BUTTON).should('be.visible');
-    cy.get(SELECTOR.RESULT.RESET_BUTTON).shoult('be.visible');
+    cy.get(SELECTOR.RESULT.RESET_BUTTON).should('be.visible');
     cy.get(SELECTOR.RESULT.WIN_COUNT).each((winCount) => {
       cy.wrap(winCount)
         .invoke('text')
-        .should('match', /^[0-9]+$/);
+        .should('match', /^[0-9]+개$/);
     });
   });
 
@@ -47,7 +47,10 @@ describe('로또 결과 확인 테스트', () => {
   });
 
   it('다시하기 버튼 클릭 시 로또 게임을 재시작한다', () => {
+    inputWinningNumbers([1,2,3,4,5,6],7);
+    cy.get(SELECTOR.WINNING_NUMBER.BUTTON).click();
     cy.get(SELECTOR.RESULT.RESET_BUTTON).click();
+
     cy.get(SELECTOR.PURCHASE_AMOUNT.FORM).should('exist');
     cy.get(SELECTOR.PURCHASE_AMOUNT.INPUT).should('exist');
     cy.get(SELECTOR.PURCHASE_AMOUNT.BUTTON).should('be.disabled');
